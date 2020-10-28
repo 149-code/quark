@@ -61,7 +61,10 @@ func subsituteURLs(file_map *map[string]string, url_map *map[string]string) map[
 	name_swap := map[string]string{}
 
 	for old_url := range *url_map {
-		file_name := "web" + strconv.Itoa(num)
+		split := strings.Split(old_url, ".")
+		ending := "." + split[len(split) - 1]
+
+		file_name := "web" + strconv.Itoa(num) + ending
 		new_url := "http://localhost:8080/" + file_name
 
 		name_swap[old_url] = file_name
